@@ -2,7 +2,6 @@ import { Copy } from 'lucide-react'
 
 import { DomainContext } from '@/app/atoms'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { domainTld } from '@/config/domain-tld'
 import { chains } from '@/config/wagmi'
@@ -15,20 +14,28 @@ import { FaucetWidgetAction } from './faucet-widget-action'
 import { SendWidgetAction } from './send-widget-action'
 
 interface DomainAndBalanceWidgetProps extends DomainContext {}
-export default function DomainAndBalanceWidget(props: DomainAndBalanceWidgetProps) {
+export default function DomainAndBalanceWidget(props?: DomainAndBalanceWidgetProps) {
   return (
-    <div className="-mx-4 flex flex-col gap-4 rounded-xl bg-gray-900 px-4 py-5">
+    <div className="-mx-2 -my-8 flex flex-col gap-4">
+      {/* <Image src="/Box.png" alt="Aether" width={300} height={50} /> */}
       {/* Widget Sections */}
-      <Card className="px-4 py-5">
+      {/* <div className="">
+          <Image src="/Box.png" alt="Aether"  width={500} height={500} />
+        </div> */}
+      <div className="-mt-36 px-10  py-5  ">
         <DomainWidgetSection {...props} />
-        <Separator className="-mx-4 my-5 w-auto" />
-        <BalanceWidgetSection {...props} />
-      </Card>
+        <Separator className="-mx-2 my-2 w-auto" />
+        <div className="-mr-6 flex flex-row justify-between">
+          <div>
+            <BalanceWidgetSection {...props} />
+          </div>
+          <div className="-mb-16 flex justify-around gap-1 [&>*]:grow">
+            <FaucetWidgetAction />
+            <SendWidgetAction />
+          </div>
+        </div>
 
-      {/* Widget Actions */}
-      <div className="flex gap-4 [&>*]:grow">
-        <FaucetWidgetAction />
-        <SendWidgetAction />
+        {/* Widget Actions */}
       </div>
     </div>
   )
@@ -38,8 +45,8 @@ const DomainWidgetSection = (domainContext: DomainAndBalanceWidgetProps) => {
   const { domain, domainName } = domainContext
 
   return (
-    <div className="flex items-center justify-between gap-2">
-      <div className="flex flex-col gap-2">
+    <div className="-mt-16  flex items-center justify-between ">
+      <div className="flex flex-col ">
         <p className="text-sm text-muted-foreground">Multichain Domain</p>
         <h2 className="font-mono text-xl font-semibold leading-none tracking-tight">
           {domainName}
@@ -63,7 +70,7 @@ const DomainWidgetSection = (domainContext: DomainAndBalanceWidgetProps) => {
         type="button"
         onClick={() => copyToClipboard(domain, `Domain '${domain}'`)}
         variant="ghost"
-        className="shrink-0"
+        className="mr-10 shrink-0"
         title="Copy domain to clipboard"
       >
         <Copy size={18} />
@@ -77,7 +84,7 @@ const BalanceWidgetSection = (domainContext: DomainAndBalanceWidgetProps) => {
   const balancesWithPrices = useChainlinkPriceFeeds(balances || [])
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="-mt-2 mb-2 ml-4 flex flex-col">
       <h3 className="text-sm text-muted-foreground">Total Balance</h3>
       <p className="font-mono text-xl font-semibold leading-none tracking-tight">
         {!balances?.length ||

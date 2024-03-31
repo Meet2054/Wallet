@@ -1,8 +1,11 @@
+import Image from 'next/image'
 import { HtmlHTMLAttributes } from 'react'
 
 import { cn } from '@/utils/cn'
 
 import { SignoutButton } from './signout-button'
+
+// Import the 'Image' component from the appropriate package
 
 export default function HomeFooter({ className }: HtmlHTMLAttributes<HTMLDivElement>) {
   return (
@@ -12,13 +15,8 @@ export default function HomeFooter({ className }: HtmlHTMLAttributes<HTMLDivElem
         className,
       )}
     >
-      <a
-        href="https://github.com/Unwallet-constellation"
-        target="_blank"
-        className="outline-none hover:text-foreground focus:text-foreground"
-      >
-        Hackathon Project for Chainlink Constellation 2023
-      </a>
+      <Image src="/Group-67.png" alt="Unwallet" width={800} height={200} className="" />{' '}
+      {/* Fix the JSX element class error */}
       <SignoutButton className="outline-none hover:text-foreground focus:text-foreground" />
     </footer>
   )

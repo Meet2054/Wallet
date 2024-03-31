@@ -6,13 +6,11 @@ import { GeistSans } from 'geist/font/sans'
 import { Provider as JotaiProvider } from 'jotai'
 import { Toaster } from 'sonner'
 
-import DotPattern from '@/components/magicui/dot-pattern'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { env } from '@/config/environment'
 import { SITE_METADATA } from '@/config/metadata'
 import { cn } from '@/utils/cn'
 
-import HomeLogo from './_components/home-logo'
 import { ClientProviders } from './client-providers'
 import './globals.css'
 
@@ -30,8 +28,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={cn(GeistSans.variable, GeistMono.variable)}>
       <body className="relative flex min-h-screen flex-col items-center justify-center px-2 pt-10">
+        {/* Background Image */}
+        {/* <div className="pointer-events-none absolute inset-0 z-0">
+          <Image
+            src="/bgme.png"
+            alt="Background Image"
+            layout="fill"
+            objectFit="cover"
+            className="z-10"
+          />
+        </div> */}
+
         {/* Logo & Name */}
-        <HomeLogo />
+        {/* <HomeLogo /> */}
 
         {/* Providers & Content */}
         <JotaiProvider>
@@ -41,9 +50,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </JotaiProvider>
 
         {/* Background Pattern */}
-        <DotPattern
-          className={cn('[mask-image:radial-gradient(circle_at_top_center,white,transparent_75%)]')}
-        />
+        {/* <DotPattern
+          className={cn('[mask-image:radial-gradient(circle_at_top_center,white,transparent_75% , )]') }
+        /> */}
 
         {/* Toast Config */}
         <Toaster

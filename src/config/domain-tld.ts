@@ -1,1 +1,1 @@
-export const domainTld = 'unwallet'
+export const domainTld = 'aether'

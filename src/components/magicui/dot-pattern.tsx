@@ -21,6 +21,7 @@ export function DotPattern({
   cx = 1,
   cy = 1,
   cr = 1,
+  bgColor = '#D2DADF', // Default background color
   className,
   ...props
 }: DotPatternProps) {
